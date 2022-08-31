@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import ContactForm from './ContactForm';
 import ContactList from './ContactList';
 import Filter from './Filter';
-
-import { GlobalStyle } from './GlobalStyle';
-import { Phonebook, PhonebookTitle, ContactsTitle } from './App.styled';
+import { Box } from './Box';
 
 const LS_KEY = 'contacts';
 
@@ -78,12 +75,16 @@ class App extends Component {
     const filteredContacts = this.getFilteredContacts();
 
     return (
-      <Phonebook>
-        <PhonebookTitle>Phonebook ☎️</PhonebookTitle>
+      <Box p={4}>
+        <Box as="h1" mb={5}>
+          Phonebook ☎️
+        </Box>
 
         <ContactForm onSubmit={this.addContact} />
 
-        <ContactsTitle>Contacts</ContactsTitle>
+        <Box as="h2" mb={3}>
+          Contacts
+        </Box>
 
         <Filter filter={filter} onChange={this.handleChangeFilter} />
 
@@ -91,9 +92,7 @@ class App extends Component {
           filteredContacts={filteredContacts}
           onDeleteContact={this.deleteContact}
         />
-        <GlobalStyle />
-        <ToastContainer autoClose={3000} />
-      </Phonebook>
+      </Box>
     );
   }
 }

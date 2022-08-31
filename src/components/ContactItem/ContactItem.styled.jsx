@@ -6,27 +6,30 @@ export const ContactsItem = styled.li`
   align-items: center;
 
   &:not(:last-child) {
-    margin-bottom: 5px;
+    margin-bottom: ${p => p.theme.space[2]}px;
   }
 `;
 
 export const ContactName = styled.p`
-  font-size: 16px;
+  font-size: ${p => p.theme.fontSizes.m};
 `;
 
 export const ContactDelete = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4px 7px;
-  font-size: 16px;
+  padding-top: ${p => p.theme.space[2]}px;
+  padding-bottom: ${p => p.theme.space[2]}px;
+  padding-left: ${p => p.theme.space[3]}px;
+  padding-right: ${p => p.theme.space[3]}px;
+  font-size: ${p => p.theme.fontSizes.m};
   letter-spacing: 0.02em;
   color: ${({ theme }) => theme.colors.white};
   border-style: none;
   background-color: ${({ theme }) => theme.colors.red};
-  border-radius: 3px;
+  border-radius: ${p => p.theme.radii.sm};
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out, transform 0.1s ease-in-out;
+  transition: background-color 300ms ease-in-out, transform 100ms ease-in-out;
 
   &:hover,
   :focus {
