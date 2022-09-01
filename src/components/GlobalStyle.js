@@ -24,6 +24,7 @@ p {
 
 ul {
   padding: 0;
+  margin: 0;
   list-style: none;
 }
 `;
