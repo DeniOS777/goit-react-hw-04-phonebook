@@ -21,12 +21,9 @@ const App = () => {
 
   const handleChangeFilter = e => setFilter(e.target.value);
 
+  const clearFilterField = () => setFilter('');
+
   const addContact = (name, number) => {
-    const newContact = {
-      id: nanoid(),
-      name,
-      number,
-    };
     const normalizeFindDuplicateContacts = contacts.find(
       contact => contact.name.toLowerCase() === name.toLowerCase()
     );
@@ -34,18 +31,31 @@ const App = () => {
     if (normalizeFindDuplicateContacts) {
       return toast.info(`${name} is already in contacts`);
     }
+    const newContact = {
+      id: nanoid(),
+      name,
+      number,
+    };
     setContacts(state => [newContact, ...state]);
   };
 
-  const deleteContact = contactId =>
+  const deleteContact = contactId => {
     setContacts(state => state.filter(({ id }) => id !== contactId));
 
-  const getFilteredContacts = () => {
+    const hasFilteredContacts =
+      getFilteredContacts().length - 1 === 0 && filter !== '';
+
+    if (hasFilteredContacts) {
+      clearFilterField();
+    }
+  };
+
+  function getFilteredContacts() {
     const normalizeFilter = filter.toLowerCase();
     return contacts.filter(({ name }) =>
       name.toLowerCase().includes(normalizeFilter)
     );
-  };
+  }
 
   const filteredContacts = getFilteredContacts();
 

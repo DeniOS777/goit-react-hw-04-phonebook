@@ -7,8 +7,8 @@ const ContactForm = ({ onSubmit }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  let inputNameId = nanoid();
-  let inputNumberId = nanoid();
+  const inputNameId = nanoid();
+  const inputNumberId = nanoid();
 
   const handleChange = e => {
     const { name, value } = e.target;

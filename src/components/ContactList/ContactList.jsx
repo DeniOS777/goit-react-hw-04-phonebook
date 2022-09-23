@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import ContactItem from '../ContactItem';
 import { ContactsList } from './ContactList.styled';
@@ -25,7 +24,7 @@ ContactList.propTypes = {
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       number: PropTypes.string.isRequired,
-    })
+    }).isRequired
   ).isRequired,
   onDeleteContact: PropTypes.func.isRequired,
 };
